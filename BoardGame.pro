@@ -6,21 +6,26 @@
 
 QT       += core gui
 
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 TARGET = BoardGame
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    Models/Player.cpp \
-    Models/GameBoard.cpp \
     Models/Space.cpp \
-    country.cpp
+    initgame.cpp \
+    Models/Player.cpp
 
 HEADERS  += mainwindow.h \
-    Models/Player.h \
-    Models/GameBoard.h \
     Models/Space.h \
-    country.h
+    initgame.h \
+    Models/Player.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    initgame.ui
+
+RESOURCES += \
+    resource.qrc
+RC_FILE = mono.rc

@@ -1,54 +1,53 @@
-/*
- * Space.h
- * Space class for first phase
- * will be edited in second phase by adding more
- * information like cost (if player will buy it)
- * and fees (if player stop in it)
- */
+#ifndef SPACE_H
+#define SPACE_H
 
-#ifndef SPACE_H_
-#define SPACE_H_
-#include <string>
-using namespace std;
+#include <QWidget>
+#include <QLabel>
+#include <QFrame>
+#include <QVBoxLayout>
+#include <QPainter>
+#include <QDebug>
 
-class Space {
+class Space : public QWidget
+{
+    Q_OBJECT
 public:
-	/**
-	 * constructor
-	 */
-	Space();
-	/**
-	 * constructor
-	 * @param name unique name for each space
-	 */
-	Space(string name, int price);
-	/**
-	 * setName setter method for name
-	 * @param name unique name for each space
-	 */
-	void setName(string name);
-	/**
-	 * getName getter method for name
-	 * @return name of space
-	 */
-	string getName();
-	string getOwner();
-	void setOwner(string name);
-	int getPrice();
-	void upgrade();
-	bool isChance();
-	bool isChest();
-	bool isPrison();
-	bool is2XSpeed();
-	bool isPark();
-	bool isFree();
-	bool isUp();
+    explicit Space(QWidget *parent = 0);
+    void setMinimumSize(int minw, int minh);
+    void setSizePolicy(QSizePolicy::Policy horizontal, QSizePolicy::Policy vertical);
+    void setSpace(QString name,QString price);
+    QString getName();
+    QString getOwner();
+    void setOwner(QString name);
+
+    int getPrice();
+    void upgrade();
+    bool isChance();
+    bool isChest();
+    bool isPrison();
+    bool is2XSpeed();
+    bool isPark();
+    bool isFree();
+    bool isUp();
 private:
-	//unique name for every space
-	string name;
-	string owner;
-	int price;
-	bool up;
+    QLabel *name;
+    QLabel *owner;
+    QLabel *price;
+    QFrame *boder;
+    QFrame *flagFrame;
+    QFrame *leftFrame;
+    QFrame *topFrame;
+    QFrame *botFrame;
+    QFrame *cPlayer;
+    QFrame *cOwner;
+    bool up;
+    void CreateUI();
+    void paintEvent(QPaintEvent *);
+    void resizeEvent(QResizeEvent *);
+signals:
+
+public slots:
+
 };
 
-#endif /* SPACE_H_ */
+#endif // SPACE_H
