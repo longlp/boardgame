@@ -26,6 +26,7 @@ void MainWindow::InitPlayer()
     for (int i = 0; i < nbPlayer; i ++)
     {
         Player *p = new Player(0,init->getPieces()[i]);
+        connect(p,SIGNAL(changePost(int,int)),this,SLOT(playerChangePos(int,int)));
         p->setSpaceName(spaces[0]->getName());
         players.append(p);
     }
@@ -357,4 +358,9 @@ void MainWindow::on_btn_Leave_clicked()
         ui->btn_Leave->setEnabled(false);
         ui->btn_Roll->setEnabled(false);
     }
+}
+void MainWindow::playerChangePos(int oldPos,int newPos)
+{
+    spaces[oldPos]->setCurrentPlayer("");
+    spaces[newPos]->setCurrentPlayer(players[cPlayer]->getPiece());
 }

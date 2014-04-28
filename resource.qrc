@@ -1,5 +1,39 @@
 <RCC>
     <qresource prefix="/">
         <file>images/mono.ico</file>
+        <file>images/flags/Vietnam.png</file>
+        <file>images/flags/Uruguay.png</file>
+        <file>images/flags/Ukraine.png</file>
+        <file>images/flags/Turkey.png</file>
+        <file>images/flags/Thailand.png</file>
+        <file>images/flags/Spain.png</file>
+        <file>images/flags/Peru.png</file>
+        <file>images/flags/Mexico.png</file>
+        <file>images/flags/Malaysia.png</file>
+        <file>images/flags/Japan.png</file>
+        <file>images/flags/Ireland.png</file>
+        <file>images/flags/Iran.png</file>
+        <file>images/flags/Greece.png</file>
+        <file>images/flags/France.png</file>
+        <file>images/flags/Finland.png</file>
+        <file>images/flags/England.png</file>
+        <file>images/flags/Egypt.png</file>
+        <file>images/flags/Cuba.png</file>
+        <file>images/flags/Chile.png</file>
+        <file>images/flags/Canada.png</file>
+        <file>images/flags/Brazil.png</file>
+        <file>images/flags/Belgium.png</file>
+        <file>images/flags/Argentina.png</file>
+        <file>images/flags/Russia.png</file>
+        <file>images/flags/S-Korea.png</file>
+        <file>images/flags/N-Korea.png</file>
+        <file>images/flags/America.png</file>
+        <file>images/flags/Prison.png</file>
+        <file>images/flags/China.png</file>
+        <file>images/flags/Chest.png</file>
+        <file>images/flags/Chance.png</file>
+        <file>images/flags/Start.png</file>
+        <file>images/flags/Park.png</file>
+        <file>images/flags/2XSpeed.png</file>
     </qresource>
 </RCC>

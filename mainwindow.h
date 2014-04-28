@@ -24,6 +24,7 @@ public:
 private slots:
     void on_btn_Roll_clicked();
     void on_btn_Leave_clicked();
+    void playerChangePos(int oldPos,int newPos);
 
 private:
     Ui::MainWindow *ui;

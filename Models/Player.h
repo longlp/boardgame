@@ -69,6 +69,8 @@ private:
 
     void CreateUI();
     void paintEvent(QPaintEvent *);
+signals:
+    emit void changePost(int oldPos, int newPos);
 };
 
 #endif // PLAYER_H

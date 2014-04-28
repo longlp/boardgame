@@ -77,6 +77,7 @@ void Player::paintEvent(QPaintEvent *)
 }
 
 void Player::setPos(int pos) {
+    emit changePost(this->pos,pos);
     this->pos = pos;
 }
 void Player::setPiece(QString piece) {
@@ -89,11 +90,13 @@ QString Player::getPiece() {
     return piece;
 }
 int Player::rollDice(bool is2X) {
+    int old = this->pos;
     int dice1 = rand() % 6 + 1;
     if (is2X) {
         pos = (pos + (dice1 * 2)) % 40;
     } else
         pos = (pos + (dice1)) % 40;
+    emit changePost(old,pos);
     return dice1;
 }
 

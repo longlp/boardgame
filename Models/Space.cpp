@@ -12,9 +12,9 @@ Space::Space(QWidget *parent) :
 void Space::CreateUI()
 {
     price->setAlignment(Qt::AlignRight);
-    boder = new QFrame();
-    boder->setFrameShape(QFrame::WinPanel);
-    boder->setFrameShadow(QFrame::Raised);
+    border = new QFrame();
+    border->setFrameShape(QFrame::WinPanel);
+    border->setFrameShadow(QFrame::Raised);
     QVBoxLayout *left = new QVBoxLayout();
     left->addWidget(name);
     left->addWidget(owner);
@@ -22,7 +22,6 @@ void Space::CreateUI()
     leftFrame = new QFrame();
     leftFrame->setLayout(left);
     flagFrame =new QFrame();
-    flagFrame->setStyleSheet("background-color: red");
     flagFrame->setMinimumSize(20,20);
     QHBoxLayout *top = new QHBoxLayout();
     top->addWidget(leftFrame);
@@ -33,14 +32,14 @@ void Space::CreateUI()
 
     QHBoxLayout *bot = new QHBoxLayout();
     cPlayer = new QFrame();
-    cPlayer->setStyleSheet("background-color: red");
+//    cPlayer->setStyleSheet("background-color: white");
     cPlayer->setMinimumSize(10,10);
     cPlayer->setMaximumSize(30,10);
     cOwner = new QFrame();
     cOwner->setMinimumSize(10,10);
     cOwner->setMaximumSize(30,10);
-    bot->addWidget(cPlayer);
     bot->addWidget(cOwner);
+    bot->addWidget(cPlayer);
     bot->addWidget(price);
     bot->setContentsMargins(0,0,0,0);
     botFrame = new QFrame();
@@ -48,7 +47,7 @@ void Space::CreateUI()
     QVBoxLayout *spa = new QVBoxLayout();
     spa->addWidget(topFrame);
     spa->addWidget(botFrame);
-    boder->setLayout(spa);
+    border->setLayout(spa);
 }
 
 void Space::paintEvent(QPaintEvent *)
@@ -57,7 +56,7 @@ void Space::paintEvent(QPaintEvent *)
         delete this->layout();
     QVBoxLayout *layout = new QVBoxLayout();
     layout->setContentsMargins(0,0,0,0);
-    layout->addWidget(boder);
+    layout->addWidget(border);
     this->setLayout(layout);
 }
 void Space::resizeEvent(QResizeEvent *)
@@ -71,11 +70,11 @@ void Space::resizeEvent(QResizeEvent *)
 
 void Space::setMinimumSize(int minw, int minh)
 {
-    boder->setMinimumSize(minw,minh);
+    border->setMinimumSize(minw,minh);
 }
 void Space::setSizePolicy(QSizePolicy::Policy horizontal, QSizePolicy::Policy vertical)
 {
-    boder->setSizePolicy(horizontal,vertical);
+    border->setSizePolicy(horizontal,vertical);
 }
 QString Space::getName() {
     return name->text();
@@ -84,12 +83,28 @@ void Space::setSpace(QString name, QString price)
 {
     this->name->setText(name);
     this->price->setText(price);
+
+    QLabel *imageLabel = new QLabel();
+    imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    imageLabel->setScaledContents(true);
+    QImage image(":/images/flags/"+name.trimmed()+".png");
+    imageLabel->setPixmap(QPixmap::fromImage(image));
+
+    QVBoxLayout *flg = new QVBoxLayout();
+    flg->addWidget(imageLabel);
+    flg->setContentsMargins(0,0,0,0);
+    flagFrame->setLayout(flg);
 }
 
 void Space::setOwner(QString name) {
     owner->setText(name);
     cOwner->setStyleSheet("background-color: " + name);
 }
+void Space::setCurrentPlayer(QString name)
+{
+    cPlayer->setStyleSheet("background-color: " + name);
+}
+
 int Space::getPrice() {
     return price->text().toInt();
 }

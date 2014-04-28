@@ -19,6 +19,7 @@ public:
     QString getName();
     QString getOwner();
     void setOwner(QString name);
+    void setCurrentPlayer(QString name);
 
     int getPrice();
     void upgrade();
@@ -33,7 +34,7 @@ private:
     QLabel *name;
     QLabel *owner;
     QLabel *price;
-    QFrame *boder;
+    QFrame *border;
     QFrame *flagFrame;
     QFrame *leftFrame;
     QFrame *topFrame;
